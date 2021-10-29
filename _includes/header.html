@@ -2,9 +2,9 @@
   <div class="bg-gray-900 p-6">
     <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
       <div class="flex items-center flex-1">
-        <div class="flex items-center justify-between w-full md:w-auto">
-          <div class="-mr-2 flex items-center md:hidden">
-            <button type="button" class="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white" aria-expanded="false">
+        <div class="flex items-center justify-end w-full md:w-auto">
+          <div class="-mr-4 flex items-center md:hidden">
+            <button id="open-menu" type="button" class="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <!-- Heroicon name: outline/menu -->
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -46,14 +46,16 @@
       From: "opacity-100 scale-100"
       To: "opacity-0 scale-95"
   -->
-  <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
+  <div id="mobile-menu" class="z-30 absolute top-0 inset-x-0 p-2 transition transform origin-top hidden">
     <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-      <div class="px-5 pt-4 flex items-center justify-between">
-        <div>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-teal-500-cyan-600.svg" alt="">
+      <div class="px-6 pt-4 flex items-center justify-between">
+        <div class="px-2">
+          <p class="text-base font-medium text-gray-900 hover:bg-gray-50">
+            Baked.
+          </p>
         </div>
         <div class="-mr-2">
-          <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600">
+          <button id="close-menu" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600">
             <span class="sr-only">Close menu</span>
             <!-- Heroicon name: outline/x -->
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -62,21 +64,21 @@
           </button>
         </div>
       </div>
-      <div class="pt-5 pb-6">
+      <div class="p-6">
         <div class="px-2 space-y-1">
-          <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
+          <a href="/" class="block py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
             Home
           </a>
 
-          <a href="/menu" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
+          <a href="/menu" class="block py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
             Menu
           </a>
 
-          <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
+          <a href="/about" class="block py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
             About
           </a>
 
-          <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
+          <a href="/contact" class="block py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
             Contact
           </a>
 
@@ -85,3 +87,16 @@
     </div>
   </div>
 </header>
+
+<script>
+  var close_btn = document.querySelector("button#close-menu");
+  var open_btn = document.querySelector("button#open-menu");
+  var menu = document.querySelector("#mobile-menu"); 
+
+	close_btn.addEventListener("click", () => {
+    menu.classList.add("hidden");
+	});
+	open_btn.addEventListener("click", () => {
+    menu.classList.remove("hidden");
+	});
+</script>
